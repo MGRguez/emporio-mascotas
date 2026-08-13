@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient( rgba(35, 25, 18, 0.92), rgba(35, 25, 18, 0.92) );
+    font-family: Georgia, "Times New Roman", serif;
+    color: #f5ead6;
+    min-height: 100vh;
+}
+
+.encabezado {
+    text-align: center;
+    padding: 28px 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+    .encabezado h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .encabezado p {
+        margin-top: 8px;
+        opacity: 0.8;
+        font-size: 15px;
+    }
+
+main {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 15px 50px;
+}
+
+.categoria {
+    margin-bottom: 38px;
+}
+
+    .categoria h2 {
+        margin: 0 0 15px;
+        font-size: 22px;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        padding-bottom: 8px;
+    }
+
+.grid-mascotas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.tarjeta {
+    background: #f3e4c8;
+    color: #33261d;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .tarjeta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 18px rgba(0,0,0,0.45);
+    }
+
+.contenedor-imagen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #d8c7aa;
+}
+
+    .contenedor-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.precio {
+    text-align: center;
+    padding: 11px 8px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.tarjeta.adoptada img {
+    filter: grayscale(100%) brightness(55%);
+}
+
+.sello-adoptada {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    border: 3px solid #fff;
+    padding: 7px 11px;
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: #fff;
+    background: rgba(80, 18, 18, 0.75);
+    border-radius: 4px;
+}
+
+.mensaje {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.8;
+}
+
+
+/* TELÉFONOS */
+
+@media (max-width: 600px) {
+
+    .encabezado {
+        padding-top: 22px;
+    }
+
+        .encabezado h1 {
+            font-size: 24px;
+        }
+
+    main {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .grid-mascotas {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .precio {
+        font-size: 17px;
+    }
+
+    .sello-adoptada {
+        font-size: 13px;
+        padding: 5px 8px;
+    }
+}
+
+/* ==========================
+   ADMINISTRACIÓN
+========================== */
+
+.panel-admin {
+    max-width: 520px;
+    margin: 0 auto 35px;
+    padding: 22px;
+    background: #f3e4c8;
+    color: #33261d;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+    .panel-admin h2 {
+        margin-top: 0;
+    }
+
+    .panel-admin label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .panel-admin input,
+    .panel-admin select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #bba889;
+        border-radius: 8px;
+        font-size: 16px;
+        background: #fffdf8;
+    }
+
+    .panel-admin button,
+    .acciones-admin button,
+    .barra-admin button {
+        border: 0;
+        border-radius: 8px;
+        padding: 11px 15px;
+        font-size: 15px;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .panel-admin > button {
+        width: 100%;
+        margin-top: 20px;
+        background: #52381f;
+        color: white;
+    }
+
+    .panel-admin button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+    }
+
+.mensaje-admin {
+    margin-top: 14px;
+    text-align: center;
+    min-height: 20px;
+}
+
+.barra-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+    .barra-admin h2 {
+        margin: 0;
+    }
+
+.btn-secundario {
+    background: #d8c7aa;
+    color: #33261d;
+}
+
+.grid-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.tarjeta-admin {
+    background: #f3e4c8;
+    color: #33261d;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+}
+
+.imagen-admin {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #d8c7aa;
+}
+
+    .imagen-admin img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.contenido-admin {
+    padding: 15px;
+}
+
+    .contenido-admin label {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .contenido-admin input {
+        width: 100%;
+        padding: 9px;
+        border: 1px solid #bba889;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+
+.acciones-admin {
+    display: grid;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.btn-guardar {
+    background: #4c6737;
+    color: white;
+}
+
+.btn-estado {
+    background: #76562f;
+    color: white;
+}
+
+.btn-eliminar {
+    background: #6f2d2d;
+    color: white;
+}
+
+
+@media (max-width: 600px) {
+
+    .panel-admin {
+        padding: 18px;
+    }
+
+    .grid-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .barra-admin {
+        align-items: flex-start;
+    }
+
+        .barra-admin button {
+            white-space: nowrap;
+        }
+}

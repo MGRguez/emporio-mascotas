@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración - Emporio de Mascotas</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <h1>🦉 Administración</h1>
+        <p>Emporio de Mascotas</p>
+    </header>
+
+    <main>
+
+        <!-- LOGIN -->
+        <section id="seccion-login" class="panel-admin">
+            <h2>Acceso administrativo</h2>
+
+            <label>Usuario</label>
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Usuario"
+            >
+
+            <label>Contraseña</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Contraseña"
+            >
+
+            <button id="btn-login">
+                Entrar
+            </button>
+
+            <div id="mensaje-login" class="mensaje-admin"></div>
+        </section>
+
+
+        <!-- PANEL -->
+        <section id="seccion-panel" style="display:none;">
+
+            <div class="barra-admin">
+
+                <h2>Catálogo</h2>
+
+                <button
+                    id="btn-logout"
+                    class="btn-secundario"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+
+            <!-- AGREGAR MASCOTA -->
+
+            <section class="panel-admin">
+
+                <h2>Nueva mascota</h2>
+
+                <label>Categoría</label>
+
+                <select id="categoria">
+                    <option value="">Seleccionar...</option>
+                    <option value="Lechuzas">Lechuzas</option>
+                    <option value="Gatos">Gatos</option>
+                    <option value="Sapos">Sapos</option>
+                    <option value="Ratas">Ratas</option>
+                    <option value="Otras criaturas">Otras criaturas</option>
+                </select>
+
+                <label>Precio en Galeones</label>
+
+                <input
+                    type="number"
+                    id="precio"
+                    min="0"
+                    step="1"
+                    placeholder="Ej. 25"
+                >
+
+                <label>Imagen</label>
+
+                <input
+                    type="file"
+                    id="imagen"
+                    accept="image/*"
+                >
+
+                <button id="btn-agregar">
+                    + Agregar mascota
+                </button>
+
+                <div
+                    id="mensaje-agregar"
+                    class="mensaje-admin"
+                ></div>
+
+            </section>
+
+
+            <!-- LISTA ADMIN -->
+
+            <section>
+
+                <h2>Mascotas registradas</h2>
+
+                <div
+                    id="catalogo-admin"
+                    class="grid-admin"
+                ></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="config.js"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
