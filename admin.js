@@ -59,12 +59,26 @@ const mensajeAgregar =
 const catalogoAdmin =
     document.getElementById("catalogo-admin");
 
+const filtroCategoria =
+    document.getElementById("filtro-categoria");
+
+const filtroEstado =
+    document.getElementById("filtro-estado");
+
+const contadorResultados =
+    document.getElementById("contador-resultados");
+
+let mascotasAdmin = [];
+
 
 // =============================
 // INICIO
 // =============================
 
 verificarSesion();
+
+filtroCategoria.addEventListener("change", aplicarFiltrosAdmin);
+filtroEstado.addEventListener("change", aplicarFiltrosAdmin);
 
 
 // =============================
@@ -350,19 +364,71 @@ async function cargarMascotasAdmin() {
         return;
     }
 
+    mascotasAdmin = data || [];
+
+    aplicarFiltrosAdmin();
+}
+
+
+function aplicarFiltrosAdmin() {
+
+    const categoriaSeleccionada = filtroCategoria.value;
+    const estadoSeleccionado = filtroEstado.value;
+
+    let resultado = [...mascotasAdmin];
+
+    if (categoriaSeleccionada !== "TODAS") {
+        resultado = resultado.filter(
+            mascota => mascota.categoria === categoriaSeleccionada
+        );
+    }
+
+    if (estadoSeleccionado !== "TODOS") {
+        resultado = resultado.filter(
+            mascota => mascota.estatus === estadoSeleccionado
+        );
+    }
+
+    resultado.sort((a, b) => {
+        if (a.estatus !== b.estatus) {
+            return a.estatus === "DISPONIBLE" ? -1 : 1;
+        }
+
+        const categoria = a.categoria.localeCompare(
+            b.categoria,
+            "es",
+            { sensitivity: "base" }
+        );
+
+        if (categoria !== 0) {
+            return categoria;
+        }
+
+        return new Date(b.fecha_creacion) - new Date(a.fecha_creacion);
+    });
+
+    mostrarMascotasAdmin(resultado);
+}
+
+
+function mostrarMascotasAdmin(mascotas) {
+
     catalogoAdmin.innerHTML = "";
 
-    if (!data || data.length === 0) {
+    contadorResultados.textContent =
+        `${mascotas.length} ${mascotas.length === 1 ? "mascota" : "mascotas"}`;
+
+    if (!mascotas || mascotas.length === 0) {
 
         catalogoAdmin.innerHTML =
             `<div class="mensaje">
-                Aún no hay mascotas registradas.
+                No hay mascotas que coincidan con estos filtros.
             </div>`;
 
         return;
     }
 
-    data.forEach(mascota => {
+    mascotas.forEach(mascota => {
 
         catalogoAdmin.appendChild(
             crearTarjetaAdmin(mascota)
