@@ -113,7 +113,7 @@ main {
 }
 
 
-/* TEL�FONOS */
+/* TELÉFONOS */
 
 @media (max-width: 600px) {
 
@@ -146,7 +146,7 @@ main {
 }
 
 /* ==========================
-   ADMINISTRACI�N
+   ADMINISTRACIÓN
 ========================== */
 
 .panel-admin {
@@ -312,4 +312,111 @@ main {
         .barra-admin button {
             white-space: nowrap;
         }
+}
+/* ==========================
+   CATEGORÃAS - CATÃLOGO PÃšBLICO
+========================== */
+
+.tabs-categorias {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 18px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tab-categoria {
+    flex: 0 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: rgba(243, 228, 200, 0.10);
+    color: #f5ead6;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.tab-categoria:hover {
+    background: rgba(243, 228, 200, 0.18);
+}
+
+.tab-categoria.activa {
+    background: #f3e4c8;
+    color: #33261d;
+    border-color: #f3e4c8;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.20);
+}
+
+/* ==========================
+   FILTROS - ADMINISTRACIÃ“N
+========================== */
+
+.filtros-admin {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 14px 0 8px;
+    padding: 15px;
+    background: rgba(243, 228, 200, 0.10);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+}
+
+.filtro-admin label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filtro-admin select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #bba889;
+    border-radius: 8px;
+    background: #fffdf8;
+    color: #33261d;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.contador-resultados {
+    margin: 0 0 14px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+@media (min-width: 701px) {
+    .tabs-categorias {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 600px) {
+    .tabs-categorias {
+        margin-left: -12px;
+        margin-right: -12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .tab-categoria {
+        padding: 9px 14px;
+        font-size: 14px;
+    }
+
+    .filtros-admin {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+    }
 }
