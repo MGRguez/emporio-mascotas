@@ -23,52 +23,32 @@
             <h2>Acceso administrativo</h2>
 
             <label>Usuario</label>
-            <input
-                type="text"
-                id="usuario"
-                placeholder="Usuario"
-            >
+            <input type="text" id="usuario" placeholder="Usuario">
 
             <label>Contraseña</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Contraseña"
-            >
+            <input type="password" id="password" placeholder="Contraseña">
 
-            <button id="btn-login">
-                Entrar
-            </button>
+            <button id="btn-login">Entrar</button>
 
             <div id="mensaje-login" class="mensaje-admin"></div>
         </section>
-
 
         <!-- PANEL -->
         <section id="seccion-panel" style="display:none;">
 
             <div class="barra-admin">
-
                 <h2>Catálogo</h2>
 
-                <button
-                    id="btn-logout"
-                    class="btn-secundario"
-                >
+                <button id="btn-logout" class="btn-secundario">
                     Cerrar sesión
                 </button>
-
             </div>
 
-
             <!-- AGREGAR MASCOTA -->
-
             <section class="panel-admin">
-
                 <h2>Nueva mascota</h2>
 
                 <label>Categoría</label>
-
                 <select id="categoria">
                     <option value="">Seleccionar...</option>
                     <option value="Lechuzas">Lechuzas</option>
@@ -79,7 +59,6 @@
                 </select>
 
                 <label>Precio en Galeones</label>
-
                 <input
                     type="number"
                     id="precio"
@@ -89,47 +68,51 @@
                 >
 
                 <label>Imagen</label>
+                <input type="file" id="imagen" accept="image/*">
 
-                <input
-                    type="file"
-                    id="imagen"
-                    accept="image/*"
-                >
+                <button id="btn-agregar">+ Agregar mascota</button>
 
-                <button id="btn-agregar">
-                    + Agregar mascota
-                </button>
-
-                <div
-                    id="mensaje-agregar"
-                    class="mensaje-admin"
-                ></div>
-
+                <div id="mensaje-agregar" class="mensaje-admin"></div>
             </section>
 
-
             <!-- LISTA ADMIN -->
-
             <section>
-
                 <h2>Mascotas registradas</h2>
 
-                <div
-                    id="catalogo-admin"
-                    class="grid-admin"
-                ></div>
+                <div class="filtros-admin">
+                    <div class="filtro-admin">
+                        <label for="filtro-categoria">Categoría</label>
+                        <select id="filtro-categoria">
+                            <option value="TODAS">Todas</option>
+                            <option value="Gatos">Gatos</option>
+                            <option value="Sapos">Sapos</option>
+                            <option value="Lechuzas">Lechuzas</option>
+                            <option value="Ratas">Ratas</option>
+                            <option value="Otras criaturas">Otras criaturas</option>
+                        </select>
+                    </div>
 
+                    <div class="filtro-admin">
+                        <label for="filtro-estado">Estado</label>
+                        <select id="filtro-estado">
+                            <option value="DISPONIBLE">Disponibles</option>
+                            <option value="ADOPTADA">Adoptadas</option>
+                            <option value="TODOS">Todas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="contador-resultados" class="contador-resultados"></div>
+
+                <div id="catalogo-admin" class="grid-admin"></div>
             </section>
 
         </section>
 
     </main>
 
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="config.js"></script>
-
     <script src="admin.js"></script>
 
 </body>
